@@ -337,6 +337,7 @@ func createPrebuiltEtcModulesInDirectory(ctx android.LoadHookContext, partition,
 
 		// Set appropriate srcs, dsts, and releative_install_path based on
 		// the source and install file names
+		/*
 		if allCopyFileNamesUnchanged {
 			modulePropsPtr.Srcs = srcBaseFiles
 
@@ -347,14 +348,14 @@ func createPrebuiltEtcModulesInDirectory(ctx android.LoadHookContext, partition,
 					Relative_install_path: proptools.StringPtr(relDestDirFromInstallDirBase),
 				})
 			}
-		} else {
-			modulePropsPtr.Srcs = srcBaseFiles
-			dsts := []string{}
-			for _, installBaseFile := range installBaseFiles {
-				dsts = append(dsts, filepath.Join(relDestDirFromInstallDirBase, installBaseFile))
-			}
-			modulePropsPtr.Dsts = dsts
+		} else {*/
+		modulePropsPtr.Srcs = srcBaseFiles
+		dsts := []string{}
+		for _, installBaseFile := range installBaseFiles {
+			dsts = append(dsts, filepath.Join(relDestDirFromInstallDirBase, installBaseFile))
 		}
+		modulePropsPtr.Dsts = dsts
+		//}
 
 		ctx.CreateModuleInDirectory(etcInstallPathToFactoryList[etcInstallPathKey], srcDir, propsList...)
 		moduleNames = append(moduleNames, moduleName)
